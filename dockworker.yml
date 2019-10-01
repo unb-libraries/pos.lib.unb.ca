@@ -1,0 +1,8 @@
+dockworker:
+  version: 1.0
+  instance:
+    project_prefix: POS
+    name: pos.lib.unb.ca
+    upstream_image:
+      - unblibraries/nginx-php:alpine-php7
+  options:
