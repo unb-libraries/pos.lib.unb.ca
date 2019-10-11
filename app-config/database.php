@@ -5,10 +5,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
         'dsn'   => '',
-        'hostname' => MYSQL_HOSTNAME,
-        'username' => MYSQL_USERNAME,
-        'password' => MYSQL_PASSWORD,
-        'database' => MYSQL_DATABASE,
+        'hostname' => 'MYSQL_HOSTNAME',
+        'username' => 'MYSQL_USERNAME',
+        'password' => 'MYSQL_PASSWORD',
+        'database' => 'MYSQL_DATABASE',
         'dbdriver' => 'mysqli',
         'dbprefix' => 'ospos_',
         'pconnect' => FALSE,
