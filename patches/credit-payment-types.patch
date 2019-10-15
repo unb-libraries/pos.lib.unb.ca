@@ -1,0 +1,15 @@
+--- application/helpers/locale_helper.php	2019-10-15 09:35:38.051384532 -0300
++++ application/helpers/locale_helper.php	2019-10-15 09:36:29.047566323 -0300
+@@ -273,6 +273,12 @@
+ 		$payments[$lang->line('sales_credit')] = $lang->line('sales_credit');
+ 	}
+ 
++        $payments[$lang->line('sales_credit')] = [
++                'Visa' => 'Visa',
++                'Mastercard' => 'Mastercard',
++                'American Express' => 'American Express',
++        ];
++
+ 	$payments[$lang->line('sales_due')] = $lang->line('sales_due');
+ 	$payments[$lang->line('sales_check')] = $lang->line('sales_check');
+ 
