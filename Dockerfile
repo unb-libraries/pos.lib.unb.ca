@@ -22,3 +22,6 @@ COPY ./app-config/database.php /app/html/application/config/database.php
 COPY ./reporting /app/html/public/reporting
 
 RUN cd /app/html/public/reporting && composer install --prefer-dist
+
+# Volumes
+VOLUME /app/html/public/uploads
