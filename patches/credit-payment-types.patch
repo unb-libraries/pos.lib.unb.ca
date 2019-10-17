@@ -1,6 +1,8 @@
---- application/helpers/locale_helper.php	2019-10-15 09:35:38.051384532 -0300
-+++ application/helpers/locale_helper.php	2019-10-15 09:36:29.047566323 -0300
-@@ -273,6 +273,12 @@
+diff --git a/application/helpers/locale_helper.php b/application/helpers/locale_helper.php
+index 3fd7a3c..b150a45 100644
+--- a/application/helpers/locale_helper.php
++++ b/application/helpers/locale_helper.php
+@@ -273,6 +273,12 @@ function get_payment_options()
  		$payments[$lang->line('sales_credit')] = $lang->line('sales_credit');
  	}
  

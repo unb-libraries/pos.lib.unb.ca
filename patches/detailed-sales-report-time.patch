@@ -1,0 +1,34 @@
+diff --git a/application/controllers/Reports.php b/application/controllers/Reports.php
+index 044329c..37cfa8d 100644
+--- a/application/controllers/Reports.php
++++ b/application/controllers/Reports.php
+@@ -1243,6 +1243,7 @@ class Reports extends Secure_Controller
+ 			$button_label = $this->lang->line('common_delete');
+ 		}
+ 
++
+ 		$summary_data = $this->xss_clean(array(
+ 			'sale_id' => $report_data['sale_id'],
+ 			'sale_date' => to_date(strtotime($report_data['sale_date'])),
+@@ -1321,7 +1322,7 @@ class Reports extends Secure_Controller
+ 			$summary_data[] = $this->xss_clean(array(
+ 				'id' => $row['sale_id'],
+ 				'type_code' => $row['type_code'],
+-				'sale_date' => to_date(strtotime($row['sale_date'])),
++				'sale_date' => to_datetime(strtotime($row['sale_date'])),
+ 				'quantity' => to_quantity_decimals($row['items_purchased']),
+ 				'employee_name' => $row['employee_name'],
+ 				'customer_name' => $row['customer_name'],
+diff --git a/application/models/reports/Detailed_sales.php b/application/models/reports/Detailed_sales.php
+index 0ef8a30..9880388 100644
+--- a/application/models/reports/Detailed_sales.php
++++ b/application/models/reports/Detailed_sales.php
+@@ -79,7 +79,7 @@ class Detailed_sales extends Report
+ 			ELSE \'\'
+ 			END) AS type_code,
+ 			MAX(sale_status) as sale_status,
+-			MAX(sale_date) AS sale_date,
++			MAX(sale_time) AS sale_date,
+ 			SUM(quantity_purchased) AS items_purchased,
+ 			MAX(employee_name) AS employee_name,
+ 			MAX(customer_name) AS customer_name,

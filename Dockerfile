@@ -12,7 +12,9 @@ RUN apk --no-cache add php7-mysqli php7-session php7-gd \
 RUN cd /app/html && curl -LO ${DOWNLOAD_URL} && unzip *.zip && rm *.zip
 
 COPY ./patches /patches
-RUN cd /app/html && patch -p0 < /patches/credit-payment-types.patch
+RUN cd /app/html \
+  && patch -p1 < /patches/credit-payment-types.patch \
+  && patch -p1 < /patches/detailed-sales-report-time.patch
 
 COPY ./scripts /scripts
 COPY ./package-conf/nginx/app.conf /etc/nginx/conf.d/app.conf
