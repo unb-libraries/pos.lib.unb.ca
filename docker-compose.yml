@@ -1,7 +1,7 @@
 version: '3.6'
 
 services:
-  mysql:
+  ospos-mysql-lib-unb-ca:
     image: mariadb:10.3
     command: mysqld --skip-name-resolve
     env_file:
@@ -17,8 +17,6 @@ services:
     env_file:
       - ./env/ospos.env
     container_name: pos.lib.unb.ca
-    links:
-      - mysql:mysql
     expose:
       - "80"
     networks:

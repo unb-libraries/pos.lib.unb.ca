@@ -1,0 +1,20 @@
+language: php
+
+services:
+  - docker
+
+php:
+  - '7.2'
+
+git:
+  depth: 1
+
+before_install:
+  - composer install
+  - vendor/unb-libraries/dockworker/scripts/travis/init.sh
+
+script:
+  - set -e
+  - vendor/bin/dockworker local:build-test
+  - vendor/unb-libraries/dockworker/scripts/kubectl/init.sh
+  - vendor/bin/dockworker image:deploy $TRAVIS_BRANCH

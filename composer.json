@@ -10,11 +10,11 @@
     }
   },
   "require-dev": {
-    "unb-libraries/dockworker": "^2.1.4"
+    "unb-libraries/dockworker": "~3"
   },
   "scripts": {
     "post-update-cmd": [
-      "vendor/bin/dockworker git:setup-hooks"
+      "vendor/bin/dockworker dockworker:git:setup-hooks"
     ]
   }
 }
