@@ -33,7 +33,9 @@ if(!empty($_POST['startdate'])) {
           ORDER BY payment_category, item_name";
 
   $stmt = $db->prepare($sql);
-  $stmt->bind_param('ss', $_POST['startdate'], $_POST['enddate']);
+  $start = $_POST['startdate'] . ' 00:00:00';
+  $end = $_POST['enddate'] . ' 23:59:59';
+  $stmt->bind_param('ss', $start, $end);
   $stmt->execute();
   $res = $stmt->get_result();
 
