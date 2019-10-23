@@ -23,7 +23,7 @@ if(!empty($_POST['startdate'])) {
               WHEN sp.payment_type IN('Debit Card', 'Visa', 'Mastercard', 'American Express') THEN 'Debit / Credit'
               ELSE 'Other'
               END AS payment_category,
-            SUM(ROUND(sp.payment_amount, 2)) AS total
+            SUM(ROUND(si.item_unit_price * si.quantity_purchased, 2)) AS total
           FROM ospos_sales_items si
           JOIN ospos_sales s ON si.sale_id = s.sale_id
           JOIN ospos_sales_payments sp ON si.sale_id = sp.sale_id
@@ -46,8 +46,8 @@ if(!empty($_POST['startdate'])) {
       'CDS (taxed)' => 'F8',
       'DDU (taxed)' => 'F10',
       'Fines' => 'F12',
-      'Miscellanous' => 'F14',
-      'Miscellanous (taxed)' => 'F15',
+      'Miscellaneous' => 'F14',
+      'Miscellaneous (taxed)' => 'F15',
       'Paid Out' => 'F18',
       'Services' => 'F20',
       'Services (taxed)' => 'F21',
@@ -59,7 +59,7 @@ if(!empty($_POST['startdate'])) {
       'DDU (taxed)' => 'F42',
       'Fines' => 'F44',
       'Miscellanous' => 'F46',
-      'Miscellanous (taxed)' => 'F47',
+      'Miscellaneous (taxed)' => 'F47',
       'Services' => 'F50',
       'Services (taxed)' => 'F51',
     ],
@@ -67,6 +67,7 @@ if(!empty($_POST['startdate'])) {
 
   $spreadsheet = IOFactory::load('pos-template.xlsx');
   $spreadsheet->setActiveSheetIndex(0);
+  $spreadsheet->getActiveSheet()->setCellValue('G1', date('Y-m-d'));
   while($row = $res->fetch_assoc()) {
     if(!empty($cells[$row['payment_category']][$row['item_name']])) {
       $spreadsheet->getActiveSheet()->setCellValue($cells[$row['payment_category']][$row['item_name']], $row['total']);
