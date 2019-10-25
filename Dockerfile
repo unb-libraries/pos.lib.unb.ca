@@ -26,3 +26,20 @@ RUN cd /app/html/public/reporting && composer install --prefer-dist
 
 # Volumes
 VOLUME /app/html/public/uploads
+
+# Metadata
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
+LABEL ca.unb.lib.generator="ospos" \
+      com.microscaling.docker.dockerfile="/Dockerfile" \
+      com.microscaling.license="MIT" \
+      org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.description="pos.lib.unb.ca provides Point-Of-Sale transactions at UNB Libraries." \
+      org.label-schema.name="pos.lib.unb.ca" \
+      org.label-schema.schema-version="1.0" \
+      org.label-schema.url="https://pos.lib.unb.ca" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/unb-libraries/pos.lib.unb.ca" \
+      org.label-schema.vendor="UNB Libraries" \
+      org.label-schema.version=$VERSION
