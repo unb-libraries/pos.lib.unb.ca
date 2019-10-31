@@ -30,7 +30,7 @@ If you work with unb-libraries applications often, you may also consider [instal
 Run ```vendor/bin/dockworker``` to list available dockworker commands for this application.
 
 ## Author / Licensing
-- Developed by [![UNB Libraries](https://github.com/unb-libraries/assets/raw/master/unblibbadge.png "UNB Libraries")](https://pos.lib.unb.ca/)
+- Developed by [![UNB Libraries](https://github.com/unb-libraries/assets/raw/master/unblibbadge.png "UNB Libraries")](https://lib.unb.ca/)
 - This work is published through our strong commitment to making as much of our development/workflow as possible freely available.
 - Consequently, the contents of this repository [unb-libraries/pos.lib.unb.ca] are licensed under the [MIT License](http://opensource.org/licenses/mit-license.html). This license explicitly excludes:
    - Any website content, which remains the exclusive property of its author(s).
