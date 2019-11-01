@@ -2,17 +2,21 @@ dockworker:
   version: '3.0'
   application:
     name: pos.lib.unb.ca
-    deployment:
-      repository: dockercloud
-      image:
-        name: unblibraries/pos.lib.unb.ca
-      environments:
-        - dev
-        - prod
     finish_marker: 99_z_notify_user_URI
-    github:
-      repo: pos.lib.unb.ca
-      owner: unb-libraries
     project_prefix: POS
     upstream_images:
       - unblibraries/nginx-php:alpine-php7
+  deployment:
+    environments:
+      - dev
+      - prod
+  github:
+    repo: pos.lib.unb.ca
+    owner: unb-libraries
+  image:
+    push_branches:
+      - dev
+      - prod
+    name: unblibraries/pos.lib.unb.ca
+    date_tag_image: true
+    repository: dockercloud
