@@ -5,6 +5,7 @@ dockworker:
     finish_marker: 99_z_notify_user_URI
     project_prefix: POS
     upstream_images:
+      - mariadb:10.3
       - unblibraries/nginx-php:alpine-php7
   deployment:
     environments:
