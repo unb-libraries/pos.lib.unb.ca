@@ -1,0 +1,106 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: ospos
+    tier: pos
+    uri: pos.lib.unb.ca
+  name: pos-lib-unb-ca
+  namespace: prod
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  minReadySeconds: 30
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ospos
+        tier: pos
+        uri: pos.lib.unb.ca
+    spec:
+      containers:
+        -
+          env:
+            -
+              name: DEPLOY_ENV
+              value: dev
+            -
+              name: MYSQL_HOSTNAME
+              value: ospos-mysql-lib-unb-ca
+            -
+              name: MYSQL_PORT
+              value: "3306"
+            -
+              name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql
+                  key: root-password
+            -
+              name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: ospos
+                  key: db
+            -
+              name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ospos
+                  key: pass
+            -
+              name: MYSQL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: ospos
+                  key: user
+            -
+              name: LOGZIO_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: logzio
+                  key: secret-key
+            -
+              name: NR_INSTALL_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: newrelic
+                  key: install-key
+            -
+              name: NGINX_LOG_FILE
+              value: "/var/log/nginx/access.log"
+            -
+              name: NGINX_ERROR_LOG_FILE
+              value: "/var/log/nginx/error.log"
+          image: "||DEPLOYMENTIMAGE||"
+          imagePullPolicy: Always
+          name: pos-lib-unb-ca
+          ports:
+            -
+              containerPort: 80
+          volumeMounts:
+            -
+              mountPath: /app/html/public/uploads
+              name: ospos-persistent-storage
+            -
+              name: ospos-spreadsheet
+              mountPath: "/reporting"
+              readOnly: true
+      priorityClassName: high-priority-services
+      imagePullSecrets:
+        -
+          name: docker-hub-auth
+      restartPolicy: Always
+      volumes:
+        -
+          name: ospos-persistent-storage
+          persistentVolumeClaim:
+            claimName: pos-lib-unb-ca
+        - name: ospos-spreadsheet
+          secret:
+            secretName: pos
