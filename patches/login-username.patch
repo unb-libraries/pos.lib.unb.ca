@@ -20,7 +20,7 @@ index 723de4b..c2acce6 100644
  }
  
 -input[type="username"], input[type="password"]
-+input[name="text"], input[type="password"]
++input[type="text"], input[type="password"]
  {
  	width:100%;
  	margin-bottom:4%;
