@@ -21,6 +21,7 @@ RUN apk --no-cache add php7-mysqli php7-session php7-gd \
    curl -LO ${DOWNLOAD_URL} && unzip *.zip && rm *.zip && \
    patch -p1 < /patches/credit-payment-types.patch && \
    patch -p1 < /patches/detailed-sales-report-time.patch && \
+   patch -p1 < /patches/login-username.patch && \
    mv /package-conf/nginx/app.conf /etc/nginx/conf.d/app.conf && \
    mkdir -p /etc/rsyslog.d && \
    mv /package-conf/rsyslog/21-logzio-nginx.conf /etc/rsyslog.d/21-logzio-nginx.conf
