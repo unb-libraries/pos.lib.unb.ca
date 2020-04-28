@@ -1,13 +1,17 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
     app: ospos
+    instance: pos.lib.unb.ca
     tier: pos
     uri: dev-pos.lib.unb.ca
   name: pos-lib-unb-ca
   namespace: dev
 spec:
+  selector:
+    matchLabels:
+      uri: dev-pos.lib.unb.ca
   replicas: 1
   revisionHistoryLimit: 2
   minReadySeconds: 30
@@ -20,6 +24,7 @@ spec:
     metadata:
       labels:
         app: ospos
+        instance: pos.lib.unb.ca
         tier: pos
         uri: dev-pos.lib.unb.ca
     spec:
