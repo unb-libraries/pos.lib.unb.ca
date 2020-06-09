@@ -28,6 +28,8 @@ spec:
         tier: pos
         uri: pos.lib.unb.ca
     spec:
+      nodeSelector:
+        deployenv: prod
       containers:
         -
           env:
