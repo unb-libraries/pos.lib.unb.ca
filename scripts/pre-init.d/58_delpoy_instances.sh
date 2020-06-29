@@ -21,7 +21,7 @@ if [[ "$DEPLOY_ENV" != "local" ]]; then
   server {
     listen  80;
     charset utf-8;
-    server_name $i.pos.lib.unb.ca;
+    server_name $i-pos.lib.unb.ca;
 
     root /app/$i/public;
     index index.html index.htm index.php;
