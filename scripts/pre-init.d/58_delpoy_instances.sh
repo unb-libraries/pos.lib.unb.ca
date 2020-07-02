@@ -65,7 +65,7 @@ EOF
 
     DBVAR="MYSQL_DATABASE_${i^^}"
     sed -i "s|MYSQL_HOSTNAME|$MYSQL_HOSTNAME|g" "/app/$i/application/config/database.php"
-    sed -i "s|MYSQL_DATABASE|${!DBVAR}|g" "/app/$i/application/config/database.php"
+    sed -i "s|$DBVAR|${!DBVAR}|g" "/app/$i/application/config/database.php"
     sed -i "s|MYSQL_USERNAME|$MYSQL_USERNAME|g" "/app/$i/application/config/database.php"
     sed -i "s|MYSQL_PASSWORD|$MYSQL_PASSWORD|g" "/app/$i/application/config/database.php"
 
