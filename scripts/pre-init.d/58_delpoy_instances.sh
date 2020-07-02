@@ -15,13 +15,16 @@ if [[ "$DEPLOY_ENV" != "local" ]]; then
     then
       cp -r "/app-config/$i/" "/app/"
     fi
-
+    NGINXDOM=$i
+    if [[ "$DEPLOY_ENV" = "dev" ]]; then
+      NGINXDOM="dev-$i"
+    fi
     CONFNEW=$(cat <<EOF
 
   server {
     listen  80;
     charset utf-8;
-    server_name $i-pos.lib.unb.ca;
+    server_name $NGINXDOM-pos.lib.unb.ca;
 
     root /app/$i/public;
     index index.html index.htm index.php;
