@@ -15,7 +15,7 @@ if [[ "$DEPLOY_ENV" != "local" ]]; then
     then
       cp -r "/app-config/$i/" "/app/"
     fi
-    NGINXDOM=$i
+    NGINXDOM="$i"
     if [[ "$DEPLOY_ENV" = "dev" ]]; then
       NGINXDOM="dev-$i"
     fi
