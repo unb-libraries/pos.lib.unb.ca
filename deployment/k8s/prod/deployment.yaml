@@ -35,7 +35,7 @@ spec:
           env:
             -
               name: DEPLOY_ENV
-              value: dev
+              value: prod
             -
               name: MYSQL_HOSTNAME
               value: ospos-mysql-lib-unb-ca
