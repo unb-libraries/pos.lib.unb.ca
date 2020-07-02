@@ -95,6 +95,12 @@ spec:
               mountPath: /app/html/public/uploads
               name: ospos-persistent-storage
             -
+              mountPath: /app/hil/public/uploads
+              name: hil-ospos-persistent-storage
+            -
+              mountPath: /app/hwkc/public/uploads
+              name: hwkc-ospos-persistent-storage
+            -
               name: ospos-spreadsheet
               mountPath: "/reporting"
               readOnly: true
@@ -108,6 +114,14 @@ spec:
           name: ospos-persistent-storage
           persistentVolumeClaim:
             claimName: pos-lib-unb-ca
+        -
+          name: hil-ospos-persistent-storage
+          persistentVolumeClaim:
+            claimName: hil-pos-lib-unb-ca
+        -
+          name: hwkc-ospos-persistent-storage
+          persistentVolumeClaim:
+            claimName: hwkc-pos-lib-unb-ca
         - name: ospos-spreadsheet
           secret:
             secretName: pos
