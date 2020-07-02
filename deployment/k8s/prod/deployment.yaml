@@ -55,6 +55,18 @@ spec:
                   name: ospos
                   key: db
             -
+              name: MYSQL_DATABASE_HIL
+              valueFrom:
+                secretKeyRef:
+                  name: ospos
+                  key: hil-db
+            -
+              name: MYSQL_DATABASE_HWKC
+              valueFrom:
+                secretKeyRef:
+                  name: ospos
+                  key: hwkc-db
+            -
               name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
