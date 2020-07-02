@@ -19,6 +19,7 @@ if [[ "$DEPLOY_ENV" != "local" ]]; then
     NGINXDOM="$i"
     if [[ "$DEPLOY_ENV" = "dev" ]]; then
       NGINXDOM="dev-$i"
+      sed -i "s|https://${i}-pos|https://${NGINXDOM}-pos|g" /app/html/public/index.html
     fi
     CONFNEW=$(cat <<EOF
 
