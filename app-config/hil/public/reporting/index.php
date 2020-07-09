@@ -65,7 +65,7 @@ if(!empty($_POST['startdate'])) {
     ],
   ];
 
-  $spreadsheet = IOFactory::load(dirname(__FILE__) . '/pos-template.xlsx');
+  $spreadsheet = IOFactory::load('/reporting/pos-template.xlsx');
   $spreadsheet->setActiveSheetIndex(0);
   $spreadsheet->getActiveSheet()->setCellValue('G1', date('Y-m-d'));
   while($row = $res->fetch_assoc()) {
