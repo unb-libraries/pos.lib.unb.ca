@@ -1,5 +1,10 @@
 {
     "require": {
         "phpoffice/phpspreadsheet": "^1.9.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "cp /reporting/pos-template.xlsx ."
+        ]
     }
 }
