@@ -22,7 +22,7 @@ RUN apk --no-cache add bash php7-mysqli php7-session php7-gd \
    curl -LO ${DOWNLOAD_URL} && unzip -q *.zip && rm *.zip && \
    patch -p1 < /patches/credit-payment-types.patch && \
    patch -p1 < /patches/detailed-sales-report-time.patch && \
-   find /app-config -name composer.json|xargs dirname|xargs -L 1 composer install --prefer-dist -d && \
+   find /app-config -name composer.json|xargs dirname|xargs -n 1 composer install --prefer-dist -d && \
    mv /package-conf/nginx/app.conf /etc/nginx/conf.d/app.conf && \
    mkdir -p /etc/rsyslog.d && \
    mv /package-conf/rsyslog/21-logzio-nginx.conf /etc/rsyslog.d/21-logzio-nginx.conf
