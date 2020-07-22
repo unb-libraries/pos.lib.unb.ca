@@ -23,7 +23,7 @@ if(!empty($_POST['startdate'])) {
               WHEN sp.payment_type IN('Debit Card', 'Visa', 'Mastercard', 'American Express') THEN 'Debit / Credit'
               ELSE 'Other'
               END AS payment_category,
-            SUM(ROUND(si.item_unit_price * si.quantity_purchased, 2)) AS total
+            ROUND(SUM(si.item_unit_price * si.quantity_purchased), 2) AS total
           FROM ospos_sales_items si
           JOIN ospos_sales s ON si.sale_id = s.sale_id
           JOIN ospos_sales_payments sp ON si.sale_id = sp.sale_id
