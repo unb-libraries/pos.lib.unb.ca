@@ -23,11 +23,13 @@ if(!empty($_POST['startdate'])) {
               WHEN sp.payment_type IN('Debit Card', 'Visa', 'Mastercard', 'American Express') THEN 'Debit / Credit'
               ELSE 'Other'
               END AS payment_category,
-            SUM(ROUND(si.item_unit_price * si.quantity_purchased, 2)) AS total
+            ROUND(SUM(si.item_unit_price * si.quantity_purchased), 2) AS total,
+            ROUND(SUM(t.item_tax_amount), 2) AS tax
           FROM ospos_sales_items si
           JOIN ospos_sales s ON si.sale_id = s.sale_id
           JOIN ospos_sales_payments sp ON si.sale_id = sp.sale_id
           JOIN ospos_items i ON si.item_id = i.item_id
+          LEFT JOIN ospos_sales_items_taxes t ON (si.sale_id = t.sale_id AND si.item_id = t.item_id)
           WHERE s.sale_status = 0 AND s.sale_time >= ? AND s.sale_time <= ?
           GROUP BY item_name, payment_category
           ORDER BY payment_category, item_name";
@@ -41,36 +43,32 @@ if(!empty($_POST['startdate'])) {
 
   $cells = [
     'Cash / Check' => [
-      'Bindery (taxed)' => 'F4',
-      'Book Sales' => 'F6',
-      'CDS (taxed)' => 'F8',
-      'DDU (taxed)' => 'F10',
-      'Fines' => 'F12',
-      'Miscellaneous' => 'F14',
-      'Miscellaneous (taxed)' => 'F15',
-      'Paid Out' => 'F18',
-      'Services' => 'F20',
-      'Services (taxed)' => 'F21',
+      'Fines & Printing' => 'D4',
+      'Fines & Printing (taxed)' => 'D5',
+      'ISS - Printing (taxed)' => 'D8',
+      'Miscellaneous' => 'D10',
+      'Miscellaneous (taxed)' => 'D11',
     ],
     'Debit / Credit' => [
-      'Bindery (taxed)' => 'F36',
-      'Book Sales' => 'F38',
-      'CDS (taxed)' => 'F40',
-      'DDU (taxed)' => 'F42',
-      'Fines' => 'F44',
-      'Miscellanous' => 'F46',
-      'Miscellaneous (taxed)' => 'F47',
-      'Services' => 'F50',
-      'Services (taxed)' => 'F51',
+      'Fines & Printing' => 'D24',
+      'Fines & Printing (taxed)' => 'D25',
+      'ISS - Printing (taxed)' => 'D28',
+      'Miscellaneous' => 'D30',
+      'Miscellaneous (taxed)' => 'D31',
     ],
   ];
 
-  $spreadsheet = IOFactory::load('/reporting/pos-template.xlsx');
+  $spreadsheet = IOFactory::load('/reporting/pos-template-hwkc.xlsx');
   $spreadsheet->setActiveSheetIndex(0);
   $spreadsheet->getActiveSheet()->setCellValue('G1', date('Y-m-d'));
   while($row = $res->fetch_assoc()) {
     if(!empty($cells[$row['payment_category']][$row['item_name']])) {
-      $spreadsheet->getActiveSheet()->setCellValue($cells[$row['payment_category']][$row['item_name']], $row['total']);
+      $cell = $cells[$row['payment_category']][$row['item_name']];
+      $spreadsheet->getActiveSheet()->setCellValue($cell, $row['total']);
+      if(!empty($row['tax'])) {
+        $cell = str_replace('D', 'E', $cell);
+        $spreadsheet->getActiveSheet()->setCellValue($cell, $row['tax']);
+      }
     }
   }
 
