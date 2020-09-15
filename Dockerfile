@@ -5,11 +5,11 @@ ARG DOWNLOAD_URL=https://github.com/opensourcepos/opensourcepos/releases/downloa
 ENV APP_WEBROOT /app/html/public
 ENV SITE_URI pos.lib.unb.ca
 
-COPY ./scripts /scripts
-COPY ./patches /patches
-COPY ./package-conf /package-conf
-COPY ./app-config /app-config
-COPY ./www/index.html /app/html/public/index.html
+COPY build/scripts /scripts
+COPY build/patches /patches
+COPY build/package-conf /package-conf
+COPY build/app-config /app-config
+COPY build/www /app/html/public/index.html
 
 # Install required packages, libraries.
 RUN apk --no-cache add bash php7-mysqli php7-session php7-gd \
