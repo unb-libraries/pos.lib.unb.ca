@@ -43,15 +43,15 @@ if(!empty($_POST['startdate'])) {
 
   $cells = [
     'Cash / Check' => [
-      'Fines & Printing' => 'D4',
-      'Fines & Printing (taxed)' => 'D5',
+      'HWKC - Fines & Printing' => 'D4',
+      'HWKC - Fines & Printing (taxed)' => 'D5',
       'ISS - Printing (taxed)' => 'D8',
       'Miscellaneous' => 'D10',
       'Miscellaneous (taxed)' => 'D11',
     ],
     'Debit / Credit' => [
-      'Fines & Printing' => 'D24',
-      'Fines & Printing (taxed)' => 'D25',
+      'HWKC - Fines & Printing' => 'D24',
+      'HWKC - Fines & Printing (taxed)' => 'D25',
       'ISS - Printing (taxed)' => 'D28',
       'Miscellaneous' => 'D30',
       'Miscellaneous (taxed)' => 'D31',
