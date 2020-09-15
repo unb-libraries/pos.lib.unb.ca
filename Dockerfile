@@ -9,7 +9,7 @@ COPY build/scripts /scripts
 COPY build/patches /patches
 COPY build/package-conf /package-conf
 COPY build/app-config /app-config
-COPY build/www /app/html/public/index.html
+COPY build/www/index.html /app/html/public/index.html
 
 # Install required packages, libraries.
 RUN apk --no-cache add bash php7-mysqli php7-session php7-gd \
