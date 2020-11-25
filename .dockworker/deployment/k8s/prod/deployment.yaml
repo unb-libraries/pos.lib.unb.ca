@@ -79,12 +79,6 @@ spec:
                   name: ospos
                   key: user
             -
-              name: LOGZIO_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: logzio
-                  key: secret-key
-            -
               name: NR_INSTALL_KEY
               valueFrom:
                 secretKeyRef:
