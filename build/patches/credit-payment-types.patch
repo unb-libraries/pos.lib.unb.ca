@@ -1,8 +1,8 @@
 diff --git a/application/helpers/locale_helper.php b/application/helpers/locale_helper.php
-index 3fd7a3c..b150a45 100644
+index 2358f0e0..2c33e09f 100644
 --- a/application/helpers/locale_helper.php
 +++ b/application/helpers/locale_helper.php
-@@ -273,6 +273,12 @@ function get_payment_options()
+@@ -278,6 +278,12 @@ function get_payment_options()
  		$payments[$lang->line('sales_credit')] = $lang->line('sales_credit');
  	}
  

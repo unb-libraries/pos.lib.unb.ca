@@ -1,8 +1,8 @@
 diff --git a/application/controllers/Reports.php b/application/controllers/Reports.php
-index 03fbecfd..e0ff52e2 100644
+index 600b1cd3..0d2743c1 100644
 --- a/application/controllers/Reports.php
 +++ b/application/controllers/Reports.php
-@@ -1321,7 +1321,7 @@ class Reports extends Secure_Controller
+@@ -1386,7 +1386,7 @@ class Reports extends Secure_Controller
  			$summary_data[] = $this->xss_clean(array(
  				'id' => $row['sale_id'],
  				'type_code' => $row['type_code'],
@@ -12,7 +12,7 @@ index 03fbecfd..e0ff52e2 100644
  				'employee_name' => $row['employee_name'],
  				'customer_name' => $row['customer_name'],
 diff --git a/application/models/reports/Detailed_sales.php b/application/models/reports/Detailed_sales.php
-index 0ef8a30b..98803887 100644
+index 86de8cdb..ac376490 100644
 --- a/application/models/reports/Detailed_sales.php
 +++ b/application/models/reports/Detailed_sales.php
 @@ -79,7 +79,7 @@ class Detailed_sales extends Report
