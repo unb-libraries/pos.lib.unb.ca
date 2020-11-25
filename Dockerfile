@@ -1,7 +1,7 @@
 FROM unblibraries/nginx-php:alpine-php7
 MAINTAINER Brian Cassidy <libsystems_at_unb.ca>
 
-ARG DOWNLOAD_URL=https://github.com/opensourcepos/opensourcepos/releases/download/3.3.1/opensourcepos.20191214181241.3.3.1.c786d4.zip
+ARG DOWNLOAD_URL=https://github.com/opensourcepos/opensourcepos/releases/download/3.3.2/opensourcepos.20200903075833.3.3.2.bb309c.zip
 ENV APP_WEBROOT /app/html/public
 ENV SITE_URI pos.lib.unb.ca
 
