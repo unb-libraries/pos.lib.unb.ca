@@ -79,6 +79,12 @@ spec:
                   name: ospos
                   key: user
             -
+              name: LOGZIO_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: logzio
+                  key: secret-key
+            -
               name: NR_INSTALL_KEY
               valueFrom:
                 secretKeyRef:
@@ -102,7 +108,13 @@ spec:
               name: hwkc-ospos-persistent-storage
             -
               name: ospos-spreadsheet
-              mountPath: "/reporting"
+              mountPath: "/reporting/pos-template.xlsx"
+              subPath: "pos-template.xlsx"
+              readOnly: true
+            -
+              name: ospos-spreadsheet-hwkc
+              mountPath: "/reporting/pos-template-hwkc.xlsx"
+              subPath: "pos-template-hwkc.xlsx"
               readOnly: true
       priorityClassName: high-priority-services
       imagePullSecrets:
@@ -124,4 +136,13 @@ spec:
             claimName: hwkc-pos-lib-unb-ca
         - name: ospos-spreadsheet
           secret:
-            secretName: pos
+            secretName: pos-xls
+            items:
+              - key: pos-template.xlsx
+                path: pos-template.xlsx
+        - name: ospos-spreadsheet-hwkc
+          secret:
+            secretName: pos-xls-hwkc
+            items:
+              - key: pos-template-hwkc.xlsx
+                path: pos-template-hwkc.xlsx
