@@ -31,8 +31,8 @@ if [[ "$DEPLOY_ENV" != "local" ]]; then
     root /app/$i/public;
     index index.html index.htm index.php;
 
-    access_log NGINX_LOG_FILE main;
-    error_log NGINX_ERROR_LOG_FILE warn;
+    access_log $NGINX_LOG_FILE main;
+    error_log $NGINX_ERROR_LOG_FILE warn;
 
     location / {
       try_files \$uri \$uri/ /index.html /index.htm /index.php?\$query_string /index.php;
