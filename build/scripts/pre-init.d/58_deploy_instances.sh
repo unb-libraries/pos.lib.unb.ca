@@ -73,6 +73,9 @@ EOF
     # Set 24-hour-long session expiry
     echo "\$config['sess_expiration'] = 86400;" >> "/app/$i/application/config/config.php"
 
+    # Disable CSRF for now: https://github.com/opensourcepos/opensourcepos/issues/3058
+    echo "\$config['csrf_protection'] = FALSE;" >> "/app/$i/application/config/config.php"
+
     echo "Setting HTTPS for non-local deployment..."
     echo "\$config['base_url'] = str_replace('http:', 'https:', \$config['base_url']);" >> "/app/$i/application/config/config.php"
   done
