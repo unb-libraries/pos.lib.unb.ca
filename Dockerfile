@@ -1,4 +1,4 @@
-FROM unblibraries/nginx-php:alpine-php7
+FROM ghcr.io/unb-libraries/nginx-php:1.x-7.x
 MAINTAINER Brian Cassidy <libsystems_at_unb.ca>
 
 ARG DOWNLOAD_URL=https://github.com/opensourcepos/opensourcepos/releases/download/3.3.3/opensourcepos.20210101114640.3.3.3.8e52bd.zip

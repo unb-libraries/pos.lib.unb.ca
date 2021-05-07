@@ -1,12 +1,13 @@
 dockworker:
-  version: '3.0'
+  version: '4.0'
   application:
     name: pos.lib.unb.ca
     finish_marker: 99_z_notify_user_URI
     project_prefix: POS
     upstream_images:
+      - ghcr.io/unb-libraries/nginx-php:1.x-7.x
       - mariadb:10.3
-      - unblibraries/nginx-php:alpine-php7
+    uuid: 3103
   deployment:
     environments:
       - dev
@@ -18,6 +19,6 @@ dockworker:
     push_branches:
       - dev
       - prod
-    name: unblibraries/pos.lib.unb.ca
+    name: ghcr.io/unb-libraries/nginx-php
     date_tag_image: true
-    repository: dockercloud
+    repository: ghcr
