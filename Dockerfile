@@ -43,4 +43,5 @@ LABEL ca.unb.lib.generator="ospos" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/unb-libraries/pos.lib.unb.ca" \
       org.label-schema.vendor="University of New Brunswick Libraries" \
-      org.label-schema.version=$VERSION
+      org.label-schema.version=$VERSION \
+      org.opencontainers.image.source="https://github.com/unb-libraries/pos.lib.unb.ca"
