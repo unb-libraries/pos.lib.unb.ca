@@ -19,6 +19,6 @@ dockworker:
     push_branches:
       - dev
       - prod
-    name: ghcr.io/unb-libraries/nginx-php
+    name: ghcr.io/unb-libraries/pos.lib.unb.ca
     date_tag_image: true
     repository: ghcr
