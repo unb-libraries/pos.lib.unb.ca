@@ -1,5 +1,3 @@
-version: '3.6'
-
 services:
   ospos-mysql-lib-unb-ca:
     image: mariadb:10.3
