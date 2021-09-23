@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-DOMAINS="hil hwkc"
+DOMAINS="hil hwkc sci eng"
 CONF=""
 
 if [[ "$DEPLOY_ENV" != "local" ]]; then

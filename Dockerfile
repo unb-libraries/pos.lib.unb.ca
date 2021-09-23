@@ -27,6 +27,8 @@ RUN apk --no-cache add bash php7-mysqli php7-session php7-gd \
 # Volumes
 VOLUME /app/hil/public/uploads
 VOLUME /app/hwkc/public/uploads
+VOLUME /app/sci/public/uploads
+VOLUME /app/eng/public/uploads
 
 # Metadata
 ARG BUILD_DATE
