@@ -110,7 +110,7 @@ spec:
               mountPath: "/reporting/pos-template-hwkc.xlsx"
               subPath: "pos-template-hwkc.xlsx"
               readOnly: true
-      priorityClassName: high-priority-services
+      priorityClassName: dev-high-priority-services
       imagePullSecrets:
         -
           name: github-container-registry-auth
