@@ -58,7 +58,7 @@ if(!empty($_POST['startdate'])) {
       'CDS (taxed)' => 'F40',
       'DDU (taxed)' => 'F42',
       'Fines' => 'F44',
-      'Miscellanous' => 'F46',
+      'Miscellaneous' => 'F46',
       'Miscellaneous (taxed)' => 'F47',
       'Services' => 'F50',
       'Services (taxed)' => 'F51',
