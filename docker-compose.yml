@@ -5,10 +5,10 @@ services:
     env_file:
       - ./env/mysql.env
     expose:
-     - "3306"
+      - "3306"
     networks:
       - pos.lib.unb.ca
-
+    restart: unless-stopped
   pos.lib.unb.ca:
     build:
       context: .
@@ -21,7 +21,7 @@ services:
       - pos.lib.unb.ca
     ports:
       - "3103:80"
-
+    restart: unless-stopped
 networks:
   pos.lib.unb.ca:
     name: pos.lib.unb.ca
