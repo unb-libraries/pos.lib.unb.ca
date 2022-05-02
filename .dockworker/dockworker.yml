@@ -1,5 +1,5 @@
 dockworker:
-  version: '4.0'
+  version: '5'
   application:
     name: pos.lib.unb.ca
     finish_marker: 99_z_notify_user_URI
