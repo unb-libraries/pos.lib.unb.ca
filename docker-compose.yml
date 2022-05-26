@@ -9,6 +9,8 @@ services:
     networks:
       - pos.lib.unb.ca
     restart: unless-stopped
+    volumes:
+      - mysql-data:/var/lib/mysql
   pos.lib.unb.ca:
     build:
       context: .
@@ -25,3 +27,5 @@ services:
 networks:
   pos.lib.unb.ca:
     name: pos.lib.unb.ca
+volumes:
+  mysql-data:
