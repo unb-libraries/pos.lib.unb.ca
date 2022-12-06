@@ -24,6 +24,7 @@ services:
     ports:
       - "3103:80"
     restart: unless-stopped
+    depends_on: []
 networks:
   pos.lib.unb.ca:
     name: pos.lib.unb.ca
