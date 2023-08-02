@@ -29,7 +29,7 @@ spec:
         uri: dev-pos.lib.unb.ca
     spec:
       nodeSelector:
-        deployenv: dev
+        deploy_dev: 'true'
       containers:
         -
           env:
