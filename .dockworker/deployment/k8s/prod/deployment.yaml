@@ -29,7 +29,7 @@ spec:
         uri: pos.lib.unb.ca
     spec:
       nodeSelector:
-        deployenv: prod
+        deploy_prod: 'true'
       containers:
         -
           env:
