@@ -1,7 +1,7 @@
 services:
   ospos-mysql-lib-unb-ca:
-    image: mariadb:10.3
-    command: mysqld --skip-name-resolve
+    image: mariadb:10.11
+    command: mysqld --skip-name-resolve  --max_allowed_packet=64M
     env_file:
       - ./env/mysql.env
     expose:
@@ -11,12 +11,12 @@ services:
     restart: unless-stopped
     volumes:
       - mysql-data:/var/lib/mysql
-  pos.lib.unb.ca:
+  pos-lib-unb-ca:
     build:
       context: .
     env_file:
       - ./env/ospos.env
-    container_name: pos.lib.unb.ca
+    container_name: pos-lib-unb-ca
     expose:
       - "80"
     networks:
@@ -24,7 +24,8 @@ services:
     ports:
       - "3103:80"
     restart: unless-stopped
-    depends_on: []
+    depends_on:
+      - ospos-mysql-lib-unb-ca
 networks:
   pos.lib.unb.ca:
     name: pos.lib.unb.ca
