@@ -1,27 +1,54 @@
 dockworker:
-  version: '5'
+  version: '6'
   application:
-    name: pos.lib.unb.ca
-    finish_marker: 99_z_notify_user_URI
-    project_prefix: POS
-    upstream_images:
-      - ghcr.io/unb-libraries/nginx-php:1.x-7.x
-      - mariadb:10.3
-    uuid: 3103
-  deployment:
-    environments:
+    name: POS application for UNB Libraries.
+    uri: https://pos.lib.unb.ca
+    description: >
+      A Point of Sale (POS) application for use in University of New Brunswick Libraries.
+    topics:
+      - pos
+    identifiers:
+      id: pos.lib.unb.ca
+      slug: pos-lib-unb-ca
+      short_slug: pos
+      uuid: 3103
+    framework:
+      name: ospos
+      version: 3
+      startup_finished_marker: '99_startup_sequence_complete'
+      endpoint:
+        name: http
+        port: 80
+        readiness_timeout: 15
+    license:
+      license: MIT
+      holder: University of New Brunswick Libraries
+    shell:
+      path: /bin/sh
+  endpoints:
+    env:
       - dev
       - prod
-    workflow:
-      source: dockworker
-      type: deployment-workflow
-  github:
-    repo: pos.lib.unb.ca
-    owner: unb-libraries
-  image:
-    push_branches:
-      - dev
-      - prod
-    name: ghcr.io/unb-libraries/pos.lib.unb.ca
-    date_tag_image: true
-    repository: ghcr
+    deployments:
+      pos-lib-unb-ca:
+        default: true
+        managed: true
+        name: pos.lib.unb.ca
+      ospos-mysql-lib-unb-ca:
+        managed: false
+        name: mysql
+  workflows:
+    vcs:
+      type: github
+      owner: unb-libraries
+      name: pos.lib.unb.ca
+    jira:
+      project_keys:
+        - POS
+    image:
+      name: ghcr.io/unb-libraries/pos.lib.unb.ca
+      parent: ghcr.io/unb-libraries/nginx-php:3.18.x
+      repository: GitHub
+      push-branches:
+        - dev
+        - prod
