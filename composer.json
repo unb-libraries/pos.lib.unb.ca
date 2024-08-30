@@ -1,7 +1,13 @@
 {
+  "autoload": {
+    "psr-4": {
+      "Dockworker\\": ".dockworker/src"
+    }
+  },
   "config": {
     "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "php-http/discovery": true
     },
     "preferred-install": {
       "*": "dist"
@@ -13,11 +19,11 @@
   "name": "unb-libraries/pos.lib.unb.ca",
   "prefer-stable": true,
   "require-dev": {
-    "unb-libraries/dockworker": "^5"
+    "unb-libraries/dockworker-daemon": "^6"
   },
   "scripts": {
     "post-update-cmd": [
-      "vendor/bin/dockworker dockworker:git:setup-hooks"
+      "vendor/bin/dockworker git:setup-hooks"
     ]
   }
 }
