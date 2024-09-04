@@ -10,16 +10,16 @@ if [[ "$DEPLOY_ENV" != "local" ]]; then
     echo "Deploying instance for \"${i}\"..."
 
     cp -r /tmp/ospos/* "/app/$i/"
-    cp /app-config/database.php "/app/$i/application/config/"
+    cp /build/app-config/database.php "/app/$i/application/config/"
     sed -i "s|MYSQL_DATABASE|MYSQL_DATABASE_${i^^}|g" "/app/$i/application/config/database.php"
-    if [[ -d "/app-config/$i/" ]]
+    if [[ -d "/build/app-config/$i/" ]]
     then
-      cp -r "/app-config/$i/" "/app/"
+      cp -r "/build/app-config/$i/" "/app/"
     fi
     NGINXDOM="$i"
     if [[ "$DEPLOY_ENV" = "dev" ]]; then
       NGINXDOM="dev-$i"
-      sed -i "s|https://${i}-pos|https://${NGINXDOM}-pos|g" /app/html/public/index.html
+      sed -i "s|https://${i}-pos|https://${NGINXDOM}-pos|g" /app/html/index.html
     fi
     CONFNEW=$(cat <<EOF
 
@@ -82,9 +82,9 @@ EOF
 
 else
   echo 'Deploying a single local instance...'
-  rm /app/html/public/index.html
+  rm /app/html/index.html
   cp -r /tmp/ospos/* /app/html/
-  cp /app-config/database.php /app/html/application/config/
+  cp /build/app-config/database.php /app/html/application/config/
 
   sed -i "s|MYSQL_HOSTNAME|$MYSQL_HOSTNAME|g" "/app/html/application/config/database.php"
   sed -i "s|MYSQL_DATABASE|$MYSQL_DATABASE|g" "/app/html/application/config/database.php"
@@ -93,4 +93,4 @@ else
 fi
 
 echo "$CONF
-}" >> /etc/nginx/conf.d/app.conf
+}" >> /etc/nginx/http.d/app.conf
