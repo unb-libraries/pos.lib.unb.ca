@@ -16,10 +16,9 @@ RUN apk --no-cache add bash php81-mysqli php81-session php81-gd \
 #   patch -p1 < /build/patches/credit-payment-types.patch && \
 #   patch -p1 < /build/patches/detailed-sales-report-time.patch && \
    find /build/app-config -name composer.json|xargs -n 1 dirname|xargs -n 1 composer install --prefer-dist -d && \
-   mv /build/nginx/app.conf "$NGINX_APP_CONF_FILE" && \
-   ${RSYNC_MOVE} /build/scripts/container/ /scripts/
-# && \
-#   mv /build/www/index.html /app/html/public/index.html
+   ${RSYNC_MOVE} /build/nginx/app.conf "$NGINX_APP_CONF_FILE" && \
+   ${RSYNC_MOVE} /build/scripts/container/ /scripts/ && \
+   ${RSYNC_MOVE} /build/www/index.html /app/html/index.html
 
 # Volumes
 VOLUME /app/hil/public/uploads
