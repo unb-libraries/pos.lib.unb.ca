@@ -1,8 +1,8 @@
 FROM ghcr.io/unb-libraries/nginx-php:3.18.x
 
 ARG DOWNLOAD_URL=https://github.com/opensourcepos/opensourcepos/releases/download/3.3.9/opensourcepos.3.3.9.c00ff2.zip
-ENV APP_WEBROOT /app/html/public
-ENV SITE_URI pos.lib.unb.ca
+ENV APP_WEBROOT="/app/html/public"
+ENV SITE_URI="pos.lib.unb.ca"
 
 COPY ./build /build
 
